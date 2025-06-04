@@ -1,6 +1,53 @@
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+st.set_page_config(page_title="Agency Dashboard", layout="wide")
+st.title("📊 Agency Performance Overview (FY24 & FY25)")
+
+# --- Load Excel Data ---
+@st.cache_data
+def load_data():
+    return pd.read_excel("agency_program_data.xlsx")
+
+df = load_data()
+
+# --- Filters ---
+st.sidebar.header("Filter Data")
+fiscal_year = st.sidebar.selectbox("Fiscal Year", sorted(df["Fiscal Year"].unique()))
+agency = st.sidebar.selectbox("Agency Name", sorted(df["Agency Name"].unique()))
+metric_type = st.sidebar.selectbox("Metric Type", sorted(df["Metric Type"].unique()))
+
+# --- Apply Filters ---
+filtered_df = df[
+    (df["Fiscal Year"] == fiscal_year) &
+    (df["Agency Name"] == agency) &
+    (df["Metric Type"] == metric_type)
+]
+
+# --- KPI Section ---
+st.subheader("📌 Summary Metrics")
+col1, col2, col3 = st.columns(3)
+col1.metric("🎯 Target", int(filtered_df["Target"].sum()))
+col2.metric("✅ Actual", int(filtered_df["Actual"].sum()))
+try:
+    outcome_pct = (filtered_df["Actual"].sum() / filtered_df["Target"].sum()) * 100
+    col3.metric("📈 Outcome %", f"{outcome_pct:.1f}%")
+except ZeroDivisionError:
+    col3.metric("📈 Outcome %", "N/A")
+
+# --- Outcome % Chart ---
+st.subheader("📈 Outcome % by Program")
+fig = px.bar(
+    filtered_df,
+    x="Program Name",
+    y="Outcome %",
+    color="Contract Duration",
+    hover_data=["Target", "Actual"],
+    title=f"{metric_type} Performance - {agency} ({fiscal_year})"
 )
+st.plotly_chart(fig, use_container_width=True)
+
+# --- Raw Data Viewer ---
+with st.expander("🗂 View Raw Filtered Data"):
+    st.dataframe(filtered_df)
