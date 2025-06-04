@@ -25,6 +25,37 @@ filtered_df = df[
     (df["Metric Type"] == metric_type)
 ]
 
+
+# --- New: Program Name Filter (based on agency selection) ---
+program_options = df[df["Agency Name"] == agency]["Program Name"].unique()
+program_name = st.sidebar.selectbox("Program Name", sorted(program_options))
+
+# --- New: Filter across both FYs for selected program ---
+comparison_df = df[
+    (df["Agency Name"] == agency) &
+    (df["Program Name"] == program_name) &
+    (df["Metric Type"] == metric_type)
+]
+
+# --- New: Comparison Chart ---
+st.subheader(f"📊 {program_name} - {metric_type} Comparison (FY24 vs FY25)")
+fig_compare = px.bar(
+    comparison_df,
+    x="Fiscal Year",
+    y="Outcome %",
+    color="Fiscal Year",
+    barmode="group",
+    text="Outcome %",
+    hover_data=["Target", "Actual"],
+    title=f"{program_name} - {metric_type} Outcome Comparison by Year"
+)
+fig_compare.update_traces(texttemplate='%{text:.1%}', textposition='outside')
+fig_compare.update_yaxes(title="Outcome %", tickformat=".0%")
+
+st.plotly_chart(fig_compare, use_container_width=True)
+
+
+
 # --- KPI Section ---
 st.subheader("📌 Summary Metrics")
 col1, col2, col3 = st.columns(3)
