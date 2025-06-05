@@ -28,6 +28,8 @@ if df_filtered.empty:
     st.warning("No data found for the selected agency and program.")
     st.stop()
 
+    
+
 # --- Group by Fiscal Year & Metric Type ---
 st.subheader(f"📈 Outcome Comparison for: {selected_program} ({selected_agency})")
 metric_types = df_filtered["Metric Type"].dropna().unique()
@@ -75,6 +77,9 @@ for i, metric in enumerate(metric_types):
     fig_actual.update_layout(yaxis=dict(range=[0, grouped["Actual"].max() + 20]))
 
     actual_cols[i].plotly_chart(fig_actual, use_container_width=True)
+
+
+
 
 
 
