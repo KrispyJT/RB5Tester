@@ -33,7 +33,7 @@ Understanding the **purpose** of each service category helps clarify why certain
 # -------------------
 st.header("📏 Metric Type Definitions")
 
-with st.expander("🔹Individuals Served (UIS)"):
+with st.expander("🔹Individuals Served (IS)"):
     st.markdown("""
     Represents the **number of distinct individuals** served by a program.
 
