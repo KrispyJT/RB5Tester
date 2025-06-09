@@ -87,7 +87,7 @@ with st.expander("📈 Dosage (Encounters per Person)"):
 
 with st.expander("📎 Duplicated vs Unduplicated Counts"):
     st.markdown("""
-    - **Unduplicated**: Each person counted only once — ideal for unique reach.
+    - **Unduplicated**: Each person counted only once per program — ideal for unique reach.
     - **Duplicated**: People counted multiple times — used in attendance-based programs like Play & Learn.
 
     > The dashboards will indicate which type of count is used for each metric.
