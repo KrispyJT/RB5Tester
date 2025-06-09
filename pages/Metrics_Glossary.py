@@ -15,19 +15,19 @@ Understanding the **purpose** of each service category helps clarify why certain
 
 - **Outreach and Navigation (ON)**  
   Connects families with early childhood resources. Focuses on **referrals** rather than repeated services.  
-  → Metric focus: *Unique Individuals Served* (referred).
+  → Metric focus: *Individuals Served* (referred).
 
 - **Early Learning (EL)**  
   Supports early development through structured programming and caregiver learning.  
-  → Metric focus: *Encounters* (sessions), sometimes duplicated UIS in Play & Learn.
+  → Metric focus: *Encounters* (sessions), sometimes duplicated Individuals Served in Play & Learn.
 
 - **Healthy Development (HD)**  
   Ensures access to physical and emotional health services for children and caregivers.  
-  → Metric focus: *1:1 or group Encounters*, *Unique Individuals Served*.
+  → Metric focus: *1:1 or group Encounters*, *Individuals Served*.
 
 - **Parent Education and Support (PES)**  
   Provides home and community-based parenting support and education.  
-  → Metric focus: *Encounters*, *Unique Individuals Served*.
+  → Metric focus: *Encounters*, *Individuals Served*.
 """)
 
 # -------------------
@@ -70,19 +70,10 @@ with st.expander("🎯 Target Setting"):
     st.markdown("""
     All targets are set during the **contract negotiation process** between the agency and First Steps Kent.  
     Each program may set targets for:
-    - Unique Individuals Served
+    - Individuals Served
     - Encounters
-    - Dosage (optional)
 
     > Dashboards reflect these targets in reporting comparisons.
-    """)
-
-with st.expander("📈 Dosage (Encounters per Person)"):
-    st.markdown("""
-    Dosage refers to the **average number of encounters per individual**.  
-    Example: If 10 people attend a total of 30 sessions, dosage = 3.
-
-    > Helps assess service depth per participant.
     """)
 
 with st.expander("📎 Duplicated vs Unduplicated Counts"):
