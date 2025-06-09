@@ -13,14 +13,19 @@ st.markdown("---")
 st.header("🔗 Quick Navigation")
 
 st.markdown("""
-- [🏢 **Agency Dashboard**](./Agency_Dashboard)
+- [🏢 **Agency Performance Dashboard**](./Agency_Performance_Dashboard)
     - View detailed performance by agency, program, and metric.
-- [📄 **Contract Overview**](./Contract_Information)
+- [📈 **Agency Program Summary**](./Agency_Program_Summary)
+    - Compare program performance and trends across years.
+- [📄 **Contract Overview**](./Contract_Overview)
     - Explore contracts by year, duration, and see target changes.
 - [📚 **Metrics Glossary**](./Metrics_Glossary)
     - Understand key metrics, definitions, and categories used.
-- [📈 **Metric Trends (FY24–FY25)**](./Metric_Trends)
+- [📈 **Metric Trends (FY24–FY25)**](./Metric_Trends_(FY24_vs_FY25))
     - Compare program performance and trends across years.
+- [📈 **Program Explorer by Category**](./Program_Explorer_by_Category)
+    - Compare program performance and trends across years.
+            
 """)
 
 st.markdown("---")
