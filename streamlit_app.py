@@ -1,33 +1,68 @@
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(page_title="Main Dashboard", layout="wide")
-st.title("📊 Agency Performance Summary")
 
-# --- Load Data ---
-@st.cache_data
-def load_data():
-    return pd.read_excel("agency_program_data.xlsx")
+import streamlit as st
 
-df = load_data()
+st.set_page_config(page_title="RPRB Dashboard Home", layout="wide")
+st.title("📊 Ready by Five Data Dashboard")
+st.markdown("Welcome! Use this tool to explore program and contract data for FY24 and FY25.")
 
-# --- Welcome / Intro ---
+st.markdown("---")
+
+st.header("🔗 Quick Navigation")
+
 st.markdown("""
-Welcome to the Ready by Five Agency Dashboard 👋  
-Use the sidebar to explore specific service categories, programs, or metrics.
-This main page gives you a high-level view of all agencies and outcomes.
-
-🧭 For deeper analysis, explore the **pages on the left**.
+- [🏢 **Agency Dashboard**](./Agency_Dashboard)
+    - View detailed performance by agency, program, and metric.
+- [📄 **Contract Overview**](./Contract_Information)
+    - Explore contracts by year, duration, and see target changes.
+- [📚 **Metrics Glossary**](./Metrics_Glossary)
+    - Understand key metrics, definitions, and categories used.
+- [📈 **Metric Trends (FY24–FY25)**](./Metric_Trends)
+    - Compare program performance and trends across years.
 """)
 
+st.markdown("---")
+
+st.info("💡 Tip: Use filters on each page to narrow results by fiscal year, program, or metric type.")
 
 
-# --- Optional Overview Stats ---
-st.subheader("🧮 Overall Totals (All Years & Agencies)")
-totals = df.groupby("Metric Type")[["Target", "Actual"]].sum().reset_index()
-totals["Outcome %"] = (totals["Actual"] / totals["Target"]) * 100
 
-st.dataframe(totals.style.format({"Target": "{:,.0f}", "Actual": "{:,.0f}", "Outcome %": "{:.1f}%"}))
+
+
+
+
+
+
+
+# st.set_page_config(page_title="Main Dashboard", layout="wide")
+# st.title("📊 Agency Performance Summary")
+
+# # --- Load Data ---
+# @st.cache_data
+# def load_data():
+#     return pd.read_excel("agency_program_data.xlsx")
+
+# df = load_data()
+
+# # --- Welcome / Intro ---
+# st.markdown("""
+# Welcome to the Ready by Five Agency Dashboard 👋  
+# Use the sidebar to explore specific service categories, programs, or metrics.
+# This main page gives you a high-level view of all agencies and outcomes.
+
+# 🧭 For deeper analysis, explore the **pages on the left**.
+# """)
+
+
+
+# # --- Optional Overview Stats ---
+# st.subheader("🧮 Overall Totals (All Years & Agencies)")
+# totals = df.groupby("Metric Type")[["Target", "Actual"]].sum().reset_index()
+# totals["Outcome %"] = (totals["Actual"] / totals["Target"]) * 100
+
+# st.dataframe(totals.style.format({"Target": "{:,.0f}", "Actual": "{:,.0f}", "Outcome %": "{:.1f}%"}))
 
 
 
