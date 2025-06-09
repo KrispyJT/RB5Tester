@@ -96,8 +96,8 @@ st.plotly_chart(fig_actual, use_container_width=True)
 
 #############
 # --- UIS Only ---
-st.header("👤 Unique Individuals Served (UIS) — Actuals")
-uis_df = df[df["Metric Type"] == "Unique Individuals Served"]
+st.header("👤 Individuals Served (UIS) — Actuals")
+uis_df = df[df["Metric Type"] == "Individuals Served"]
 uis_grouped = uis_df.groupby(["Fiscal Year", "Service Category", "Program Type"])["Actual"].sum().reset_index()
 
 fig_uis = px.bar(
