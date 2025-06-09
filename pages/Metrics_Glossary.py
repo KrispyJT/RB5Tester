@@ -102,7 +102,25 @@ with st.expander("Information"):
     Services ensure parents have the knowledge and skills to support their children’s health, development, and learning. PE programs provide in-home and/or community-based support and education. In-home services involve trained providers visiting families’ homes to offer one-on-one education and support.
     """)
 
+# ----------------------
+st.header("Contract Periods Information")
+with st.expander("Contract Lengths"):
+    st.markdown("""
+    - **FY24**  
+      * Start Date: 10/1/2023
+      * End Date: 9/30/2024
+      * Most agencies contracts started 1/1/2024. 
 
+    - **FY25**  
+      * Start Date: 10/1/2024
+      * End Date: 9/30/2025
+      * Current contract are in progress, Indivdiuals Served and Encounters are most recent numbers.
+
+    - **FY26**  
+      * Start Date: 10/1/2025
+      * End Date: 9/30/2026
+     
+    """)
 
 # -------------------
 st.markdown("---")
