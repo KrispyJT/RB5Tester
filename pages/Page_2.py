@@ -112,11 +112,11 @@ else:
 st.subheader("📈 Target Changes from FY24 to FY25")
 
 @st.cache_data
-def load_target_change_csv():
-    return pd.read_csv("Targets_Change_by_Metric.csv")
+def load_target_change():
+    return pd.read_excel("Target_Change_by_Metric.xlxs")
 
 try:
-    target_df = load_target_change_csv()
+    target_df = load_target_change()
 
     # Optional filter
     metric_options = sorted(target_df["Metric Type"].dropna().unique())
