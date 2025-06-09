@@ -108,7 +108,44 @@ else:
 
 
 
+# --- Section: Load Preprocessed Target Changes CSV ---
+st.subheader("📈 Target Changes from FY24 to FY25")
 
+@st.cache_data
+def load_target_change_csv():
+    return pd.read_csv("Targets_Change_by_Metric.csv")
+
+try:
+    target_df = load_target_change_csv()
+
+    # Optional filter
+    metric_options = sorted(target_df["Metric Type"].dropna().unique())
+    selected_metric = st.selectbox("Filter by Metric Type", ["All"] + metric_options)
+
+    plot_df = target_df.copy()
+    if selected_metric != "All":
+        plot_df = plot_df[plot_df["Metric Type"] == selected_metric]
+
+    if plot_df.empty:
+        st.warning("No data available for selected metric.")
+    else:
+        # Bar chart of Target Change
+        fig = px.bar(
+            plot_df,
+            x="Agency Name",
+            y="Target Change",
+            color="Metric Type",
+            title="Change in Metric Targets (FY25 - FY24)",
+            labels={"Target Change": "Target Difference"},
+        )
+        fig.update_layout(xaxis_tickangle=-45)
+        st.plotly_chart(fig, use_container_width=True)
+
+        with st.expander("📄 Show Source Data"):
+            st.dataframe(plot_df)
+
+except FileNotFoundError:
+    st.warning("⚠️ Could not find 'Targets Change by Metric.csv'. Please make sure the file is in the app directory.")
 
 
 
