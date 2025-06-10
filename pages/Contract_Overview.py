@@ -160,6 +160,8 @@ try:
             plot_df,
             x="Label",
             y="Target Change",
+            # orientation='h',
+            # barmode="stack",
             color="Metric Type",
             title="Change in Metric Targets (FY25 - FY24)",
             labels={"Target Change": "Target Difference"},
