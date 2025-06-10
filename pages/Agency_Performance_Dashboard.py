@@ -14,7 +14,6 @@ df = load_data()
 
 # --- Top-Level Filters ---
 st.markdown("### 🔍 Select an Agency and Program")
-
 col1, col2 = st.columns(2)
 with col1:
     agencies = sorted(df["Agency Name"].dropna().unique())

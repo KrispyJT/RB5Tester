@@ -15,7 +15,7 @@ def load_data():
     return df
 
 df = load_data()
-
+st.info("Click each section below to expand and learn more about agencies.")
 # --- Sidebar Filters ---
 st.sidebar.header("🔎 Filter")
 fiscal_years = sorted(df["Fiscal Year"].dropna().unique())
